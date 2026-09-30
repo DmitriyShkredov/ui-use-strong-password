@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Password Strength Checker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="desktop" aria-hidden="true">
+    <div class="menubar">
+      <b>Safari</b>
+      <span>Файл</span>
+      <span>Правка</span>
+      <span>Вид</span>
+      <span>Окно</span>
+    </div>
+    <div class="code-window">
+      <div class="code-title">
+        <i></i><i></i><i></i>
+        <span>signup.js</span>
+      </div>
+      <pre><code>password.addEventListener('input', checkStrength)
+
+const rules = [
+  value.length >= 8,
+  /[A-Z]/.test(value),
+  /\d/.test(value),
+  /[^A-Za-z0-9]/.test(value)
+]</code></pre>
+    </div>
+    <div class="dock">
+      <i></i><i></i><i></i><i></i><i></i>
+    </div>
+  </div>
+
+  <main class="overlay">
+    <section class="window" role="dialog" aria-modal="true" aria-labelledby="title">
+      <header class="titlebar">
+        <div class="traffic-lights" aria-hidden="true">
+          <i></i><i></i><i></i>
+        </div>
+        <span>Регистрация</span>
+      </header>
+
+      <div class="content">
+        <h1 id="title">Создать аккаунт</h1>
+
+        <form id="signup" novalidate>
+          <label for="email">Почта</label>
+          <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" value="user@gmail.com">
+
+          <label for="password">Пароль</label>
+          <div class="password-field">
+            <input id="password" name="password" type="password" autocomplete="new-password" placeholder="Попробуйте: 123456" required>
+            <button class="visibility" id="visibility" type="button" aria-label="Показать пароль" aria-pressed="false" title="Показать пароль">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M2 12s3.8-6.5 10-6.5S22 12 22 12s-3.8 6.5-10 6.5S2 12 2 12Z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+                <path class="eye-slash" d="M4 4l16 16"></path>
+              </svg>
+            </button>
+          </div>
+
+          <div class="strength" data-level="empty" aria-label="Сила пароля">
+            <div class="meter" aria-hidden="true"></div>
+          </div>
+
+          <ul class="rules" aria-label="Требования к паролю">
+            <li data-rule="length"><span></span>Минимум 8 символов</li>
+            <li data-rule="upper"><span></span>Есть заглавная буква</li>
+            <li data-rule="number"><span></span>Есть цифра</li>
+            <li data-rule="symbol"><span></span>Есть спецсимвол</li>
+          </ul>
+
+          <button class="primary" type="submit">Создать аккаунт</button>
+        </form>
+
+        <div class="result" id="result" role="status" aria-live="polite">
+          Хороший индикатор помогает до отправки формы.
+        </div>
+
+        <div class="success" id="success" hidden>
+          <div class="success-icon" aria-hidden="true">✓</div>
+          <h2>Регистрация успешна</h2>
+          <p>Аккаунт создан. Теперь можно продолжить работу.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
